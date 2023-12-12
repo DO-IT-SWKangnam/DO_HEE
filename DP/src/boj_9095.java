@@ -23,7 +23,11 @@ public class boj_9095 {
 		for(int i = 0; i<tc; i++) {
 			n = Integer.parseInt(br.readLine());
 			
-			System.out.print(calc(n));
+			System.out.println(calc(n));
 		}
 	}
 }
+
+/*
+ * 순간 1개는 안되는 건가 헷갈려서 헤멜 뻔하다가 다행이 금방 점화식 짬
+ */
