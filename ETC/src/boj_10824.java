@@ -1,18 +1,24 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class boj_10824 {
 	public static void main(String[] args) throws IOException  {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		String str1 = st.nextToken() + st.nextToken();
-		String str2 = st.nextToken() + st.nextToken();
+		String str = br.readLine();
+		String arr[] = new String[str.length()];
 		
-		long result = Long.parseLong(str1)+Long.parseLong(str2);
+		for(int i = 0; i < str.length(); i++) {
+			arr[i] = str.substring(i);
+		}
 		
-		System.out.print(result);
+		Arrays.sort(arr);
+		
+		for(String s: arr) {
+			System.out.println(s);
+		}
 	}
 }
