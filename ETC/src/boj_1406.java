@@ -55,3 +55,5 @@ public class boj_1406 {
 		System.out.println(sb);
 	}
 }
+
+/* index로 풀었다가 시간초과 나서,, iterator 사용*/
