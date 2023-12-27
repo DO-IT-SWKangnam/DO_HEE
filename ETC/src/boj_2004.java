@@ -6,8 +6,9 @@ import java.util.StringTokenizer;
 public class boj_2004 {
 	public static long getGcd(long n, int value) {
 		long count = 0;
-		while(n != 0 && n % value == 0) {
-			count++;
+		
+		while(n >= value) {
+			count += n/value;
 			n /= value;
 		}
 		return count;
@@ -20,21 +21,10 @@ public class boj_2004 {
 		long n = Long.parseLong(st.nextToken());
 		long m = Long.parseLong(st.nextToken());
 		
-		long son[] = new long[2];
-		for(long i = m + 1l; i <= n ; i++) {
-			son[0] += getGcd(i, 2);
-			son[1] += getGcd(i, 5);
-		}
+		long two = getGcd(n, 2) - getGcd(n-m, 2) - getGcd(m, 2);
+		long five = getGcd(n, 5) - getGcd(n-m, 5) - getGcd(m, 5);
 		
-		long mom[] = new long[2];
-		for(long i = 1; i <= n - m ; i++) {
-			mom[0] += getGcd(i, 2);
-			mom[1] += getGcd(i, 5);
-		}
-		son[0] -= mom[0];
-		son[1] -= mom[1];
-		
-		long result = Math.min(son[0], son[1]);
+		long result = Math.min(two, five);
 		System.out.println(result);
 	}
 }
