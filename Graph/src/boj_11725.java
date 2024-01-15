@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 public class boj_11725 {
 	static int size;
 	static LinkedList<Integer> nodes[];
+	static int[] parent; 
 	public static void main(String[] args) throws IOException  {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
@@ -15,6 +16,7 @@ public class boj_11725 {
 		size = Integer.parseInt(br.readLine());
 		
 		nodes= new LinkedList[size+1];
+		parent = new int[size+1];
 		for (int i = 1; i <size+1 ; i++) {
             nodes[i] = new LinkedList<>();
         }
@@ -28,12 +30,14 @@ public class boj_11725 {
 			nodes[b].add(a);
 		}
 		
+		findParent();
+		
 		for (int i = 2; i <=size ; i++) {
-			findParent(i);
+			System.out.println(parent[i]);
 		}
 	}
 	
-	public static void findParent(int value) {
+	public static void findParent() {
 		Queue<Integer> queue  = new LinkedList<>();
 		boolean visited[] = new boolean[size+1];
 		
@@ -42,15 +46,14 @@ public class boj_11725 {
 		while(!queue.isEmpty()) {
 			int now = queue.poll();
 			for(int next : nodes[now]) {
-				if(next == value) {
-					System.out.println(now);
-					return;
-				}
-				else if(!visited[next]) {
+				if(!visited[next]) {
 					queue.offer(next);
 					visited[next] = true;
+					parent[next] = now;
 				}
 			}
 		}
 	}
 }
+
+/* 굳이 매 번 할 필요가 없었움.. */
